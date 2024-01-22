@@ -38,8 +38,10 @@ The focus of this task is on your ability to work with APIs, process JSON data, 
 
 ### Approach 1
   -follows the guidance provided by the challenge
+  
   -uses userId from /todos to query /users in 205 API calls
     
 ### Approach 2
   -uses published and easily found API endpoint
+  
   -uses /users and todos data /users/1/todos in 12 API calls
