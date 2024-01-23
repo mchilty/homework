@@ -37,11 +37,10 @@ print(todos_url)
 print(users_todos_url)
 print()
 
-
 #
-#uses just the data provided by /users and /todos 
+#follows recommended approach provided in challenge
+#uses data found in /todos and queries or fetches related data from the user's profile
 #
-
 todos_extract = {}
 for todo in todos_response_data:
 		userId = (todo['userId'])
@@ -60,11 +59,39 @@ for todo in todos_response_data:
 		todos_extract['completed'] = completed
 		todos_extract_json_data = json.dumps(todos_extract)	
 		print(todos_extract_json_data)
-		
-#
-#uses /users and the nested path for /users/$id/todos 
-#
 
+print()
+print("################")
+print()
+
+	
+#
+#uses the data returned by /todos and /users without using subsequent GETs
+#
+another_todos_extract = {}
+for user in users_response_data:
+		username = (user['username'])
+		email = (user['email'])
+
+		for task in todos_response_data:
+				title = (task['title'])
+				completed = (task['completed'])
+				
+				if (task['userId']) == (user['id']):
+					another_todos_extract['userName'] = username
+					another_todos_extract['email'] = email
+					another_todos_extract['todoTitle'] = title
+					another_todos_extract['completed'] = completed
+					another_todos_extract_json_data = json.dumps(another_todos_extract)	
+					print(another_todos_extract_json_data)
+
+print()
+print("################")
+print()		
+
+#		
+#uses the data returned by /users and queries or fetches todo data path from /users/$id/todos using subsequent GETs 
+#
 user_extract = {}
 for user in users_response_data:
 		userId = (user['id'])
@@ -84,4 +111,4 @@ for user in users_response_data:
 			user_extract_json_data = json.dumps(user_extract)	
 			print(user_extract_json_data)
 			
-print("All done!")
+print("Completum est.")
