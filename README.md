@@ -1,4 +1,4 @@
-## ~~2~~ 3 different solutons to a JSONPlaceholder code challenge
+## ~~2~~ 3 different solutions to a JSONPlaceholder code challenge
 
 **Challenge**:
 "You will be working with the JSONPlaceholder API, a fake online REST
