@@ -1,4 +1,4 @@
-## 2 different solutons to a JSONPlaceholder code challenge
+## ~~2~~ 3 different solutons to a JSONPlaceholder code challenge
 
 **Challenge**:
 "You will be working with the JSONPlaceholder API, a fake online REST
@@ -42,6 +42,10 @@ The focus of this task is on your ability to work with APIs, process JSON data, 
   -uses userId from /todos to query /users in 205 API calls
     
 ### Approach 2
+  -uses /users and /todos in 2 API calls
+
+
+### Approach 3
   -uses published and easily found API endpoint
   
   -uses /users and todos data /users/1/todos in 12 API calls
