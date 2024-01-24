@@ -79,11 +79,11 @@ for user in users_response_data:
 		username = (user['username'])
 		email = (user['email'])
 
-		for task in todos_response_data:
-				title = (task['title'])
-				completed = (task['completed'])
+		for todo in todos_response_data:
+				title = (todo['title'])
+				completed = (todo['completed'])
 				
-				if (task['userId']) == (user['id']):
+				if (todo['userId']) == (user['id']):
 					another_todos_extract['userName'] = username
 					another_todos_extract['email'] = email
 					another_todos_extract['todoTitle'] = title
@@ -107,9 +107,9 @@ for user in users_response_data:
 		users_todos_response = requests.get(users_todos_url, headers=headers, proxies=proxies)
 		users_todo_response_data = users_todos_response.json()
 		
-		for task in users_todo_response_data:
-			title = (task['title'])
-			completed = (task['completed'])		
+		for todo in users_todo_response_data:
+			title = (todo['title'])
+			completed = (todo['completed'])		
 			user_extract['userName'] = username
 			user_extract['email'] = email
 			user_extract['todoTitle'] = title
