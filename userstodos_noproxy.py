@@ -1,10 +1,9 @@
 #!/usr/local/bin/python3
 #
 #
-#mchilty@gmail.com 20240121
+#mchilty@gmail.com 
 #
-#Collects and harmonizes oddball Latin homework completion status using 2 different approaches from:
-#
+#Collects and harmonizes oddball Latin homework completion status from:
 #
 #https://jsonplaceholder.typicode.com/users
 #https://jsonplaceholder.typicode.com/todos
@@ -19,8 +18,8 @@
 import json
 import requests
 
+headers = {'User-Agent': 'userstodosGetter-0.1'}
 
-headers = {'User-Agent': 'mchilty-0.1'}
 users_url = ("https://jsonplaceholder.typicode.com/users")
 todos_url = ("https://jsonplaceholder.typicode.com/todos")
 users_todos_url = ("https://jsonplaceholder.typicode.com/users/$id/todos")
@@ -66,7 +65,7 @@ print()
 
 	
 #
-#uses the data returned by /todos and /users without using subsequent GETs
+#uses the data returned by /todos and /users without using subsequent API requests
 #
 another_todos_extract = {}
 for user in users_response_data:
@@ -90,7 +89,7 @@ print("################")
 print()		
 
 #		
-#uses the data returned by /users and queries or fetches todo data path from /users/$id/todos using subsequent GETs 
+#uses the data returned by /users and queries or fetches todo data path from /users/$id/todos using subsequent API requests 
 #
 user_extract = {}
 for user in users_response_data:
@@ -111,4 +110,4 @@ for user in users_response_data:
 			user_extract_json_data = json.dumps(user_extract)	
 			print(user_extract_json_data)
 			
-print("Completum est.")
+print("Q.E.D. Concordare Notitia.")
