@@ -24,8 +24,8 @@ users_url = ("https://jsonplaceholder.typicode.com/users")
 todos_url = ("https://jsonplaceholder.typicode.com/todos")
 users_todos_url = ("https://jsonplaceholder.typicode.com/users/$id/todos")
 
-users_response = requests.get(users_url, headers=headers)
-todos_response = requests.get(todos_url, headers=headers)
+users_response = requests.get(users_url, timeout=5, headers=headers)
+todos_response = requests.get(todos_url, timeout=5, headers=headers)
 
 users_response_data = users_response.json()
 todos_response_data = todos_response.json()
@@ -46,7 +46,7 @@ for todo in todos_response_data:
 		title = (todo['title'])
 		completed = (todo['completed'])
 		users_bio_url = (users_url + "/" + str(todo['userId']))
-		users_bio_response = requests.get(users_bio_url, headers=headers) 
+		users_bio_response = requests.get(users_bio_url, timeout=5, headers=headers) 
 		users_bio_response_data = users_bio_response.json()
 		
 		username = (users_bio_response_data['username'])
@@ -97,7 +97,7 @@ for user in users_response_data:
 		username = (user['username'])
 		email = (user['email'])
 		users_todos_url = (users_url + "/" + str(user['id']) + "/todos")
-		users_todos_response = requests.get(users_todos_url, headers=headers)
+		users_todos_response = requests.get(users_todos_url, timeout=5, headers=headers)
 		users_todo_response_data = users_todos_response.json()
 		
 		for todo in users_todo_response_data:
