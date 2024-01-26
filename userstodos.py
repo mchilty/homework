@@ -47,23 +47,23 @@ print()
 #
 todos_extract = {}
 for todo in todos_response_data:
-	userId = (todo['userId'])
-	title = (todo['title'])
-	completed = (todo['completed'])
-	users_bio_url = (users_url + "/" + str(todo['userId']))
-	users_bio_response = requests.get(users_bio_url, timeout=5, headers=headers, proxies=proxies)
-	users_bio_response_data = users_bio_response.json()
+    userId = (todo['userId'])
+    title = (todo['title'])
+    completed = (todo['completed'])
+    users_bio_url = (users_url + "/" + str(todo['userId']))
+    users_bio_response = requests.get(users_bio_url, timeout=5, headers=headers, proxies=proxies)
+    users_bio_response_data = users_bio_response.json()
 
-	username = (users_bio_response_data['username'])
-	email = (users_bio_response_data['email'])
-		
-	todos_extract['userName'] = username
-	todos_extract['email'] = email
-	todos_extract['todoTitle'] = title
-	todos_extract['completed'] = completed
-	todos_extract_json_data = json.dumps(todos_extract)
-	print(todos_extract_json_data)
-		
+    username = (users_bio_response_data['username'])
+    email = (users_bio_response_data['email'])
+
+    todos_extract['userName'] = username
+    todos_extract['email'] = email
+    todos_extract['todoTitle'] = title
+    todos_extract['completed'] = completed
+    todos_extract_json_data = json.dumps(todos_extract)
+    print(todos_extract_json_data)
+
 print()
 print("################")
 print()
@@ -73,20 +73,20 @@ print()
 #
 another_todos_extract = {}
 for user in users_response_data:
-	username = (user['username'])
-	email = (user['email'])
+    username = (user['username'])
+    email = (user['email'])
 
-	for todo in todos_response_data:
-		title = (todo['title'])
-		completed = (todo['completed'])
-			
-		if (todo['userId']) == (user['id']):
-			another_todos_extract['userName'] = username
-			another_todos_extract['email'] = email
-			another_todos_extract['todoTitle'] = title
-			another_todos_extract['completed'] = completed
-			another_todos_extract_json_data = json.dumps(another_todos_extract)
-			print(another_todos_extract_json_data)
+    for todo in todos_response_data:
+        title = (todo['title'])
+        completed = (todo['completed'])
+
+        if (todo['userId']) == (user['id']): # match records on values of 'userID' and 'id'
+            another_todos_extract['userName'] = username
+            another_todos_extract['email'] = email
+            another_todos_extract['todoTitle'] = title
+            another_todos_extract['completed'] = completed
+            another_todos_extract_json_data = json.dumps(another_todos_extract)
+            print(another_todos_extract_json_data)
 
 print()
 print("################")
@@ -97,20 +97,20 @@ print()
 #
 user_extract = {}
 for user in users_response_data:
-	username = (user['username'])
-	email = (user['email'])
-	users_todos_url = (users_url + "/" + str(user['id']) + "/todos")
-	users_todos_response = requests.get(users_todos_url, timeout=5, headers=headers, proxies=proxies)
-	users_todos_response_data = users_todos_response.json()
-		
-	for todo in users_todos_response_data:
-		title = (todo['title'])
-		completed = (todo['completed'])
-		user_extract['userName'] = username
-		user_extract['email'] = email
-		user_extract['todoTitle'] = title
-		user_extract['completed'] = completed
-		user_extract_json_data = json.dumps(user_extract)
-		print(user_extract_json_data)
-			
+    username = (user['username'])
+    email = (user['email'])
+    users_todos_url = (users_url + "/" + str(user['id']) + "/todos")
+    users_todos_response = requests.get(users_todos_url, timeout=5, headers=headers, proxies=proxies)
+    users_todos_response_data = users_todos_response.json()
+
+    for todo in users_todos_response_data:
+        title = (todo['title'])
+        completed = (todo['completed'])
+        user_extract['userName'] = username
+        user_extract['email'] = email
+        user_extract['todoTitle'] = title
+        user_extract['completed'] = completed
+        user_extract_json_data = json.dumps(user_extract)
+        print(user_extract_json_data)
+
 print("Q.E.D. Concordare Notitia.")
