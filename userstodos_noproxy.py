@@ -17,7 +17,7 @@
 import json
 import requests
 
-headers = {'User-Agent': 'userstodosGetter-0.1'}
+headers = {'User-Agent': 'userstodosGetter-0.1', 'Accept': 'application/json'}
 
 users_url = ("https://jsonplaceholder.typicode.com/users")
 todos_url = ("https://jsonplaceholder.typicode.com/todos")

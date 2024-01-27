@@ -22,7 +22,7 @@ import requests
 
 os.environ['REQUESTS_CA_BUNDLE'] = "/Users/mchilty/burpCAcert.pem"
 proxies = {"http": "http://127.0.0.1:8080", "https": "http://127.0.0.1:8080"}
-headers = {'User-Agent': 'userstodosGetter-0.1'}
+headers = {'User-Agent': 'userstodosGetter-0.1', 'Accept': 'application/json'}
 
 users_url = ("https://jsonplaceholder.typicode.com/users")
 todos_url = ("https://jsonplaceholder.typicode.com/todos")
