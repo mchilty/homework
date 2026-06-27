@@ -54,8 +54,8 @@ for todo in todos_response_data:
     users_bio_response = requests.get(users_bio_url, timeout=5, headers=headers, proxies=proxies)
     users_bio_response_data = users_bio_response.json()
 
-    username = (users_bio_response_data['username'])
-    email = (users_bio_response_data['email'])
+    username = users_bio_response_data['username']
+    email = users_bio_response_data['email']
 
     todos_extract['userName'] = username
     todos_extract['email'] = email
@@ -77,10 +77,10 @@ for user in users_response_data:
     email = (user['email'])
 
     for todo in todos_response_data:
-        title = (todo['title'])
-        completed = (todo['completed'])
+        title = todo['title']
+        completed = todo['completed']
 
-        if (todo['userId']) == (user['id']): # match records on values of 'userID' and 'id'
+        if todo['userId'] == user['id']: # match records on values of 'userID' and 'id'
             another_todos_extract['userName'] = username
             another_todos_extract['email'] = email
             another_todos_extract['todoTitle'] = title
@@ -97,15 +97,15 @@ print()
 #
 user_extract = {}
 for user in users_response_data:
-    username = (user['username'])
-    email = (user['email'])
+    username = user['username']
+    email = user['email']
     users_todos_url = (users_url + "/" + str(user['id']) + "/todos")
     users_todos_response = requests.get(users_todos_url, timeout=5, headers=headers, proxies=proxies)
     users_todos_response_data = users_todos_response.json()
 
     for todo in users_todos_response_data:
-        title = (todo['title'])
-        completed = (todo['completed'])
+        title = todo['title']
+        completed = todo['completed']
         user_extract['userName'] = username
         user_extract['email'] = email
         user_extract['todoTitle'] = title
